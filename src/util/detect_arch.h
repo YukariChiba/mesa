@@ -97,6 +97,17 @@
 #define DETECT_ARCH_MIPS 1
 #endif
 
+#if defined(__riscv)
+#define DETECT_ARCH_RISCV 1
+#if __riscv_xlen == 64
+#define DETECT_ARCH_RISCV64 1
+#elif __riscv_xlen == 32
+#define DETECT_ARCH_RISCV32 1
+#else
+#error "detect_arch: unknown target riscv xlen"
+#endif
+#endif
+
 #ifndef DETECT_ARCH_X86
 #define DETECT_ARCH_X86 0
 #endif
@@ -135,6 +146,18 @@
 
 #ifndef DETECT_ARCH_MIPS
 #define DETECT_ARCH_MIPS 0
+#endif
+
+#ifndef DETECT_ARCH_RISCV
+#define DETECT_ARCH_RISCV 0
+#endif
+
+#ifndef DETECT_ARCH_RISCV32
+#define DETECT_ARCH_RISCV32 0
+#endif
+
+#ifndef DETECT_ARCH_RISCV64
+#define DETECT_ARCH_RISCV64 0
 #endif
 
 #endif /* UTIL_DETECT_ARCH_H_ */
