@@ -1,5 +1,6 @@
 *.csv eol=crlf
 * text=auto
+*.patch binary
 *.jpg binary
 *.png binary
 *.gif binary
